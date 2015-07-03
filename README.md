@@ -29,7 +29,7 @@ The above example is the same as using `PureRenderMixin`:
 
 ```jsx
 var React = require('react');
-var PureRenderMixin = React.addons.PureRenderMixin;
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Test = React.createClass({
   mixins: [
