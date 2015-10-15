@@ -16,6 +16,6 @@
     "react": "^0.14.0"
   },
   "dependencies": {
-    "react-addons-shallow-compare": "^0.14.0-beta1"
+    "react-addons-shallow-compare": "^0.14.0"
   }
 }
