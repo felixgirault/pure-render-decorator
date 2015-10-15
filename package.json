@@ -17,5 +17,11 @@
   },
   "dependencies": {
     "react-addons-shallow-compare": "^0.14.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
