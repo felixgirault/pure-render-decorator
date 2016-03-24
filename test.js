@@ -4,7 +4,7 @@
  */
 'use strict';
 
-var shallowCompare = require('react-addons-shallow-compare');
+var shallowCompare = require('react/lib/shallowCompare');
 var assert = require('assert');
 var decorate = require('./index');
 
