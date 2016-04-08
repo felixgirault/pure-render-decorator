@@ -13,13 +13,14 @@
   "repository": "felixgirault/pure-render-decorator",
   "main": "index.js",
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^15.0.0 || ^0.14.0"
   },
   "dependencies": {
-    "react-addons-shallow-compare": "^0.14.0"
+    "react-addons-shallow-compare": "^15.0.0 || ^0.14.0"
   },
   "devDependencies": {
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "react": "^15.0.0 || ^0.14.0"
   },
   "scripts": {
     "test": "mocha"
