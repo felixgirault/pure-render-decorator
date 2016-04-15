@@ -4,9 +4,7 @@
  */
 'use strict';
 
-var shallowCompare = require('react-addons-shallow-compare');
-
-
+var shallowEqual = require('fbjs/lib/shallowEqual');
 
 /**
  * Tells if a component should update given it's next props
@@ -16,7 +14,7 @@ var shallowCompare = require('react-addons-shallow-compare');
  * @param object nextState Next state.
  */
 function shouldComponentUpdate(nextProps, nextState) {
-  return shallowCompare(this, nextProps, nextState);
+  return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
 }
 
 /**
