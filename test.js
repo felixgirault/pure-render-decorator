@@ -4,11 +4,8 @@
  */
 'use strict';
 
-var shallowCompare = require('react-addons-shallow-compare');
 var assert = require('assert');
 var decorate = require('./index');
-
-
 
 /**
  *
@@ -21,32 +18,29 @@ describe('pure-render-decorator', function() {
   component.props = { foo: 1 };
   component.state = { bar: 2 };
 
-  /**
-   *
-   */
   it('should add a method named shouldComponentUpdate', function() {
     assert.ok('shouldComponentUpdate' in component);
     assert.ok(typeof component.shouldComponentUpdate === 'function');
   });
 
-  /**
-   *
-   */
-  it('should use shallowCompare to compare props and state', function() {
-    assert.equal(
-      component.shouldComponentUpdate({}, {}),
-      shallowCompare(component, {}, {})
-    );
+  it('should return true if the props and state are different', function() {
+    assert.ok(component.shouldComponentUpdate({}, {}));
+  });
 
-    assert.equal(
-      component.shouldComponentUpdate(
+  it('should return false if the props and state are reference-equals', function() {
+    assert.ok(
+      !component.shouldComponentUpdate(
         component.props,
         component.state
-      ),
-      shallowCompare(
-        component,
-        component.props,
-        component.state
+      )
+    );
+  });
+
+  it('should return false if props and state are shallow-equals but different references', function() {
+    assert.ok(
+      !component.shouldComponentUpdate(
+        { foo: 1 },
+        { bar: 2 }
       )
     );
   });
