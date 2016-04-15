@@ -44,4 +44,12 @@ describe('pure-render-decorator', function() {
       )
     );
   });
+
+  /**
+   *
+   */
+  it('should return the component', function() {
+    var c = function() {};
+    assert.equal(c, decorate(c));
+  });
 });

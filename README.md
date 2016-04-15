@@ -20,9 +20,9 @@ import {Component} from 'react';
 import pureRender from 'pure-render-decorator';
 
 @pureRender
-class Test extends Component {
+export default class Test extends Component {
   render() {
-    return <div></div>;
+    return <div />;
   }
 }
 ```
@@ -42,4 +42,19 @@ var Test = React.createClass({
     return <div></div>;
   }
 });
+```
+
+As decorators are simply functions, you can also use `pureRender()` without the decorator syntax:
+
+```jsx
+import {Component} from 'react';
+import pureRender from 'pure-render-decorator';
+
+class Test extends Component {
+  render() {
+    return <div />;
+  }
+}
+
+export default pureRender(Test);
 ```
