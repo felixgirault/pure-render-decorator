@@ -16,7 +16,7 @@
     "react": "^15.0.0 || ^0.14.0"
   },
   "dependencies": {
-    "fbjs": "^0.8.0"
+    "fbjs": "0.8.0"
   },
   "devDependencies": {
     "mocha": "^2.3.3",
