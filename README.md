@@ -3,6 +3,8 @@ Pure render decorator
 
 An ES7 decorator to make React components "pure".
 
+[![Build Status](https://travis-ci.org/felixgirault/pure-render-decorator.svg?branch=master)](https://travis-ci.org/felixgirault/pure-render-decorator)
+
 Installation
 ------------
 
