@@ -24,6 +24,7 @@ function shouldComponentUpdate(nextProps, nextState) {
  */
 function pureRenderDecorator(component) {
   component.prototype.shouldComponentUpdate = shouldComponentUpdate;
+  return component;
 }
 
 
