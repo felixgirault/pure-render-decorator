@@ -1,6 +1,6 @@
 {
   "name": "pure-render-decorator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Makes React components pure.",
   "keywords": [
     "react",
