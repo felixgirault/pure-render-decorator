@@ -4,52 +4,68 @@
  */
 'use strict';
 
-var assert = require('assert');
+var chai = require('chai');
+var spies = require('chai-spies');
+var React = require('react');
+var jsdom = require('jsdom').jsdom;
+var enzyme = require('enzyme');
 var decorate = require('./index');
+
+chai.use(spies);
+
+var expect = chai.expect;
+var spy = chai.spy;
+var createElement = React.createElement;
+var mount = enzyme.mount;
+
+
+
+/**
+ *
+ */
+global.document = jsdom('');
+global.window = document.defaultView;
+global.navigator = {
+  userAgent: 'node.js'
+};
+
+Object.keys(document.defaultView)
+  .forEach(function(property) {
+    if (typeof global[property] === 'undefined') {
+      global[property] = document.defaultView[property];
+    }
+  });
+
+
 
 /**
  *
  */
 describe('pure-render-decorator', function() {
-  function Component() {};
-  decorate(Component);
-
-  var component = new Component();
-  component.props = { foo: 1 };
-  component.state = { bar: 2 };
-
-  it('should add a method named shouldComponentUpdate', function() {
-    assert.ok('shouldComponentUpdate' in component);
-    assert.ok(typeof component.shouldComponentUpdate === 'function');
-  });
-
-  it('should return true if the props and state are different', function() {
-    assert.ok(component.shouldComponentUpdate({}, {}));
-  });
-
-  it('should return false if the props and state are reference-equals', function() {
-    assert.ok(
-      !component.shouldComponentUpdate(
-        component.props,
-        component.state
-      )
-    );
-  });
-
-  it('should return false if props and state are shallow-equals but different references', function() {
-    assert.ok(
-      !component.shouldComponentUpdate(
-        { foo: 1 },
-        { bar: 2 }
-      )
-    );
-  });
 
   /**
    *
    */
-  it('should return the component', function() {
-    var c = function() {};
-    assert.equal(c, decorate(c));
+  it('should rerender only when the props change', function() {
+    var Component = spy(function() {
+      return null;
+    });
+
+    var Pure = decorate(Component);
+    var wrapper = mount(createElement(Pure, {
+      foo: 'bar'
+    }));
+
+    wrapper.setProps({
+      foo: 'bar'
+    });
+
+    expect(Component).to.have.been.called.once();
+
+    wrapper.setProps({
+      foo: 'baz'
+    });
+
+    expect(Component).to.have.been.called.twice();
   });
 });

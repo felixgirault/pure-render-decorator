@@ -19,8 +19,14 @@
     "fbjs": "^0.8.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "enzyme": "^2.4.1",
+    "jsdom": "^9.4.1",
     "mocha": "^2.3.3",
-    "react": "^15.0.0 || ^0.14.0"
+    "react": "^15.0.0 || ^0.14.0",
+    "react-addons-test-utils": "^15.2.1",
+    "react-dom": "^15.2.1"
   },
   "scripts": {
     "test": "mocha"
