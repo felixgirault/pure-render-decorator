@@ -5,6 +5,12 @@ An ES7 decorator to make React components "pure".
 
 [![Build Status](https://travis-ci.org/felixgirault/pure-render-decorator.svg?branch=master)](https://travis-ci.org/felixgirault/pure-render-decorator)
 
+Alternatives
+------------
+
+* As of [v15.3.0](https://github.com/facebook/react/releases/tag/v15.3.0), React provides a `PureComponent` base class to make a component pure.
+* [recompose](https://github.com/acdlite/recompose/blob/master/docs/API.md#pure) provides a clean and functional way to make components pure.
+
 Installation
 ------------
 
