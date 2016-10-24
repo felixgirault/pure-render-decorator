@@ -23,6 +23,11 @@ function shouldComponentUpdate(nextProps, nextState) {
  * @param object component Component.
  */
 function pureRenderDecorator(component) {
+  if (component.prototype.shouldComponentUpdate !== undefined) {
+    throw new Error("Cannot add a pure render decorator on a component that already"
+      + " implements shouldComponentUpdate, but " + component.prototype.name
+      + " already implements shouldComponentUpdate.")
+  }
   component.prototype.shouldComponentUpdate = shouldComponentUpdate;
   return component;
 }

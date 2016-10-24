@@ -23,6 +23,16 @@ describe('pure-render-decorator', function() {
     assert.ok(typeof component.shouldComponentUpdate === 'function');
   });
 
+  it('should throw an error if shouldComponentUpdate is already implemented', function() {
+    function ComponentWithShouldComponentUpdate() {};
+    ComponentWithShouldComponentUpdate.prototype.shouldComponentUpdate = () => false;
+
+    var expectedErrorMessage = "Cannot add a pure render decorator on a component"
+      + " that already implements shouldComponentUpdate, but ComponentWithShouldComponentUpdate"
+      + " already implements shouldComponentUpdate.";
+    assert.throws(() => decorate(ComponentWithShouldComponentUpdate), Error, expectedErrorMessage);
+  });
+
   it('should return true if the props and state are different', function() {
     assert.ok(component.shouldComponentUpdate({}, {}));
   });
