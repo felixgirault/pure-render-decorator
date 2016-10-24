@@ -17,6 +17,13 @@ function shouldComponentUpdate(nextProps, nextState) {
   return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
 }
 
+function getFunctionName(fun) {
+  var ret = fun.toString();
+  ret = ret.substr('function '.length);
+  ret = ret.substr(0, ret.indexOf('('));
+  return ret;
+}
+
 /**
  * Makes the given component "pure".
  *
@@ -24,8 +31,9 @@ function shouldComponentUpdate(nextProps, nextState) {
  */
 function pureRenderDecorator(component) {
   if (component.prototype.shouldComponentUpdate !== undefined) {
+    var componentName = component.prototype.name || component.name || getFunctionName(component);
     throw new Error("Cannot add a pure render decorator on a component that already"
-      + " implements shouldComponentUpdate, but " + component.prototype.name
+      + " implements shouldComponentUpdate, but " + componentName
       + " already implements shouldComponentUpdate.")
   }
   component.prototype.shouldComponentUpdate = shouldComponentUpdate;

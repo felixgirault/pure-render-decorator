@@ -30,7 +30,7 @@ describe('pure-render-decorator', function() {
     var expectedErrorMessage = "Cannot add a pure render decorator on a component"
       + " that already implements shouldComponentUpdate, but ComponentWithShouldComponentUpdate"
       + " already implements shouldComponentUpdate.";
-    assert.throws(() => decorate(ComponentWithShouldComponentUpdate), Error, expectedErrorMessage);
+    assert.throws(() => decorate(ComponentWithShouldComponentUpdate), new RegExp(expectedErrorMessage));
   });
 
   it('should return true if the props and state are different', function() {
