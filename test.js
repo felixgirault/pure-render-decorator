@@ -27,9 +27,9 @@ describe('pure-render-decorator', function() {
     function ComponentWithShouldComponentUpdate() {};
     ComponentWithShouldComponentUpdate.prototype.shouldComponentUpdate = () => false;
 
-    var expectedErrorMessage = "Cannot add a pure render decorator on a component"
-      + " that already implements shouldComponentUpdate, but ComponentWithShouldComponentUpdate"
-      + " already implements shouldComponentUpdate.";
+    var expectedErrorMessage = "Cannot add a pure render decorator to "
+      + "ComponentWithShouldComponentUpdate, because it already implements "
+      + "`shouldComponentUpdate\\(\\)`";
     assert.throws(() => decorate(ComponentWithShouldComponentUpdate), new RegExp(expectedErrorMessage));
   });
 
