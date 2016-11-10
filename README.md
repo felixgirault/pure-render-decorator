@@ -39,15 +39,16 @@ The above example is the same as using `PureRenderMixin`:
 var React = require('react');
 var PureRenderMixin = require('react-addons-pure-render-mixin');
 
-var Test = React.createClass({
-  mixins: [
-    PureRenderMixin
-  ],
-
-  render: function() {
-    return <div></div>;
+export default class Test extends Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this); // https://facebook.github.io/react/docs/pure-render-mixin.html
   }
-});
+  
+  render() {
+    return <div />;
+  }
+}
 ```
 
 As decorators are simply functions, you can also use `pureRender()` without the decorator syntax:
